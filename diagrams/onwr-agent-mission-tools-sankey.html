@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ONWR · แผนภาพความเชื่อมโยงแบบ Sankey</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{margin:0;background:#F5F5F7;color:#1D1D1F;font-family:Inter,'IBM Plex Sans Thai',sans-serif;line-height:1.65}header,main,footer{max-width:1920px;margin:auto;padding:32px 40px}h1{font-size:40px;line-height:1.3;font-weight:600;margin:16px 0}h2{font-size:24px}p{color:#6E6E73;max-width:1120px}.eyebrow,a{color:#0066CC}.diagram-container{width:100%;overflow-x:auto}svg{width:100%;min-width:1840px;display:block}.legend{display:flex;flex-wrap:wrap;gap:32px;font-size:14px}.swatch{display:inline-block;width:28px;height:8px;margin-right:8px;background:#6E6E73;opacity:.5}.blue{background:#0066CC}.note{border-left:3px solid #0066CC;padding-left:20px}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:16px;border-bottom:1px solid #D2D2D7}th{background:#EAF2FC}footer{font-size:13px;color:#6E6E73}a{text-decoration:none}@media(max-width:700px){header,main,footer{padding:24px}h1{font-size:30px}}@media print{@page{size:A3 landscape;margin:10mm}header,main,footer{padding:8px}.diagram-container{overflow-x:visible}svg{min-width:0;width:100%}.table-wrap{break-before:page}h1{font-size:24px}}</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">ONWR / AGENT RELATIONSHIP MAP</div>
+<h1>13 ภารกิจ → Agent → เครื่องมือ</h1>
+<p>แผนภาพความเชื่อมโยงแบบ Sankey-style รวมครบในภาพเดียว โดย Agent หลักรับโจทย์และเลือก Sub-agent ตามภารกิจ สามารถประสานหลายด้านสำหรับโจทย์เดียวได้</p>
+<p class="note">เส้นมีความหนาเท่ากันเพื่อแสดงความสัมพันธ์เท่านั้น ไม่ใช่ Sankey เชิงปริมาณ และไม่ได้หมายถึงเรียกใช้ทุกเครื่องมือในทุกครั้ง<br>MCP ทั้ง 3 ระบบเป็นข้อเสนอระยะออกแบบ ยังไม่ได้เชื่อมต่อฐานข้อมูลจริง</p>
+</header>
+<main>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1840 1512" role="img" aria-labelledby="onwr-sankey-title onwr-sankey-desc">
+<title id="onwr-sankey-title">13 ภารกิจ เชื่อม Agent และเครื่องมือ</title>
+<desc id="onwr-sankey-desc">ภารกิจ 13 ด้านส่งงานผ่าน Agent หลักไปยัง Sub-agent ที่สอดคล้องกัน ทุก Agent ใช้คลังองค์ความรู้กลาง และบางภารกิจใช้ MCP เฉพาะด้านตามความจำเป็น โดยความหนาเส้นไม่แสดงปริมาณ</desc>
+<rect width="1840" height="1512" fill="#F5F5F7"/>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" fill="#1D1D1F" font-weight="600">01 / ภารกิจทั้ง 13 ด้าน</text>
+<text x="640" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" fill="#1D1D1F" font-weight="600">02 / Agent หลัก + Sub-agent</text>
+<text x="1512" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" fill="#1D1D1F" font-weight="600">03 / เครื่องมือ</text>
+<text x="40" y="104" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#6E6E73" font-weight="400">ภารกิจ → มอบหมายงาน → ผู้เชี่ยวชาญ → แหล่งความรู้และข้อมูล</text>
+<path d="M 520 236.0 C 580.0 236.0 580.0 236.0 640 236.0 L 640 244.0 C 580.0 244.0 580.0 244.0 520 244.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 236.0 C 876.0 236.0 876.0 236.0 932 236.0 L 932 244.0 C 876.0 244.0 876.0 244.0 820 244.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 224.0 C 1372.0 224.0 1372.0 220.0 1512 220.0 L 1512 228.0 C 1372.0 228.0 1372.0 232.0 1232 232.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 328.0 C 580.0 328.0 580.0 328.0 640 328.0 L 640 336.0 C 580.0 336.0 580.0 336.0 520 336.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 328.0 C 876.0 328.0 876.0 328.0 932 328.0 L 932 336.0 C 876.0 336.0 876.0 336.0 820 336.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 316.0 C 1372.0 316.0 1372.0 248.0 1512 248.0 L 1512 256.0 C 1372.0 256.0 1372.0 324.0 1232 324.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 420.0 C 580.0 420.0 580.0 420.0 640 420.0 L 640 428.0 C 580.0 428.0 580.0 428.0 520 428.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 420.0 C 876.0 420.0 876.0 420.0 932 420.0 L 932 428.0 C 876.0 428.0 876.0 428.0 820 428.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 408.0 C 1372.0 408.0 1372.0 276.0 1512 276.0 L 1512 284.0 C 1372.0 284.0 1372.0 416.0 1232 416.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 512.0 C 580.0 512.0 580.0 512.0 640 512.0 L 640 520.0 C 580.0 520.0 580.0 520.0 520 520.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 512.0 C 876.0 512.0 876.0 512.0 932 512.0 L 932 520.0 C 876.0 520.0 876.0 520.0 820 520.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 500.0 C 1372.0 500.0 1372.0 304.0 1512 304.0 L 1512 312.0 C 1372.0 312.0 1372.0 508.0 1232 508.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 604.0 C 580.0 604.0 580.0 604.0 640 604.0 L 640 612.0 C 580.0 612.0 580.0 612.0 520 612.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 604.0 C 876.0 604.0 876.0 604.0 932 604.0 L 932 612.0 C 876.0 612.0 876.0 612.0 820 612.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 592.0 C 1372.0 592.0 1372.0 332.0 1512 332.0 L 1512 340.0 C 1372.0 340.0 1372.0 600.0 1232 600.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 696.0 C 580.0 696.0 580.0 696.0 640 696.0 L 640 704.0 C 580.0 704.0 580.0 704.0 520 704.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 696.0 C 876.0 696.0 876.0 696.0 932 696.0 L 932 704.0 C 876.0 704.0 876.0 704.0 820 704.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 684.0 C 1372.0 684.0 1372.0 360.0 1512 360.0 L 1512 368.0 C 1372.0 368.0 1372.0 692.0 1232 692.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 788.0 C 580.0 788.0 580.0 788.0 640 788.0 L 640 796.0 C 580.0 796.0 580.0 796.0 520 796.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 788.0 C 876.0 788.0 876.0 788.0 932 788.0 L 932 796.0 C 876.0 796.0 876.0 796.0 820 796.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 776.0 C 1372.0 776.0 1372.0 388.0 1512 388.0 L 1512 396.0 C 1372.0 396.0 1372.0 784.0 1232 784.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 880.0 C 580.0 880.0 580.0 880.0 640 880.0 L 640 888.0 C 580.0 888.0 580.0 888.0 520 888.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 880.0 C 876.0 880.0 876.0 880.0 932 880.0 L 932 888.0 C 876.0 888.0 876.0 888.0 820 888.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 868.0 C 1372.0 868.0 1372.0 416.0 1512 416.0 L 1512 424.0 C 1372.0 424.0 1372.0 876.0 1232 876.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 972.0 C 580.0 972.0 580.0 972.0 640 972.0 L 640 980.0 C 580.0 980.0 580.0 980.0 520 980.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 972.0 C 876.0 972.0 876.0 972.0 932 972.0 L 932 980.0 C 876.0 980.0 876.0 980.0 820 980.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 960.0 C 1372.0 960.0 1372.0 444.0 1512 444.0 L 1512 452.0 C 1372.0 452.0 1372.0 968.0 1232 968.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 1064.0 C 580.0 1064.0 580.0 1064.0 640 1064.0 L 640 1072.0 C 580.0 1072.0 580.0 1072.0 520 1072.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 1064.0 C 876.0 1064.0 876.0 1064.0 932 1064.0 L 932 1072.0 C 876.0 1072.0 876.0 1072.0 820 1072.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 1052.0 C 1372.0 1052.0 1372.0 472.0 1512 472.0 L 1512 480.0 C 1372.0 480.0 1372.0 1060.0 1232 1060.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 1156.0 C 580.0 1156.0 580.0 1156.0 640 1156.0 L 640 1164.0 C 580.0 1164.0 580.0 1164.0 520 1164.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 1156.0 C 876.0 1156.0 876.0 1156.0 932 1156.0 L 932 1164.0 C 876.0 1164.0 876.0 1164.0 820 1164.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 1144.0 C 1372.0 1144.0 1372.0 500.0 1512 500.0 L 1512 508.0 C 1372.0 508.0 1372.0 1152.0 1232 1152.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 1248.0 C 580.0 1248.0 580.0 1248.0 640 1248.0 L 640 1256.0 C 580.0 1256.0 580.0 1256.0 520 1256.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 1248.0 C 876.0 1248.0 876.0 1248.0 932 1248.0 L 932 1256.0 C 876.0 1256.0 876.0 1256.0 820 1256.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 1236.0 C 1372.0 1236.0 1372.0 528.0 1512 528.0 L 1512 536.0 C 1372.0 536.0 1372.0 1244.0 1232 1244.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 520 1340.0 C 580.0 1340.0 580.0 1340.0 640 1340.0 L 640 1348.0 C 580.0 1348.0 580.0 1348.0 520 1348.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 820 1340.0 C 876.0 1340.0 876.0 1340.0 932 1340.0 L 932 1348.0 C 876.0 1348.0 876.0 1348.0 820 1348.0 Z" fill="#6E6E73" fill-opacity=".22"/>
+<path d="M 1232 1328.0 C 1372.0 1328.0 1372.0 556.0 1512 556.0 L 1512 564.0 C 1372.0 564.0 1372.0 1336.0 1232 1336.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<path d="M 1232 420.0 C 1372.0 420.0 1372.0 828.0 1512 828.0 L 1512 836.0 C 1372.0 836.0 1372.0 428.0 1232 428.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 788.0 C 1372.0 788.0 1372.0 856.0 1512 856.0 L 1512 864.0 C 1372.0 864.0 1372.0 796.0 1232 796.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 880.0 C 1372.0 880.0 1372.0 884.0 1512 884.0 L 1512 892.0 C 1372.0 892.0 1372.0 888.0 1232 888.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 236.0 C 1372.0 236.0 1372.0 1036.0 1512 1036.0 L 1512 1044.0 C 1372.0 1044.0 1372.0 244.0 1232 244.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 328.0 C 1372.0 328.0 1372.0 1064.0 1512 1064.0 L 1512 1072.0 C 1372.0 1072.0 1372.0 336.0 1232 336.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 892.0 C 1372.0 892.0 1372.0 1092.0 1512 1092.0 L 1512 1100.0 C 1372.0 1100.0 1372.0 900.0 1232 900.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 340.0 C 1372.0 340.0 1372.0 1244.0 1512 1244.0 L 1512 1252.0 C 1372.0 1252.0 1372.0 348.0 1232 348.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 432.0 C 1372.0 432.0 1372.0 1272.0 1512 1272.0 L 1512 1280.0 C 1372.0 1280.0 1372.0 440.0 1232 440.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 1232 800.0 C 1372.0 800.0 1372.0 1300.0 1512 1300.0 L 1512 1308.0 C 1372.0 1308.0 1372.0 808.0 1232 808.0 Z" fill="#6E6E73" fill-opacity=".38"/>
+<path d="M 820 172.0 C 1166.0 172.0 1166.0 172.0 1512 172.0 L 1512 180.0 C 1166.0 180.0 1166.0 180.0 820 180.0 Z" fill="#0066CC" fill-opacity=".18"/>
+<rect x="40" y="200" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-01 · ภารกิจ</text>
+<text x="56" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">นโยบายและแผนบริหารจัดการน้ำ</text>
+<rect x="932" y="200" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-01</text>
+<text x="948" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">นโยบายและแผน</text>
+<rect x="40" y="292" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="316" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-02 · ภารกิจ</text>
+<text x="56" y="340" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">บูรณาการแผนงานและงบประมาณ</text>
+<rect x="932" y="292" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="316" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-02</text>
+<text x="948" y="340" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">แผนงานและงบประมาณ</text>
+<rect x="40" y="384" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="408" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-03 · ภารกิจ</text>
+<text x="56" y="432" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">บริหารจัดการน้ำระดับลุ่มน้ำ</text>
+<rect x="932" y="384" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="408" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-03</text>
+<text x="948" y="432" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">บริหารจัดการลุ่มน้ำ</text>
+<rect x="40" y="476" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="500" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-04 · ภารกิจ</text>
+<text x="56" y="524" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">กฎหมายและระเบียบด้านทรัพยากรน้ำ</text>
+<rect x="932" y="476" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="500" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-04</text>
+<text x="948" y="524" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">กฎหมายและระเบียบ</text>
+<rect x="40" y="568" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="592" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-05 · ภารกิจ</text>
+<text x="56" y="616" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">งานเลขานุการคณะกรรมการ</text>
+<rect x="932" y="568" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="592" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-05</text>
+<text x="948" y="616" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">เลขานุการคณะกรรมการ</text>
+<rect x="40" y="660" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="684" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-06 · ภารกิจ</text>
+<text x="56" y="708" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">การมีส่วนร่วมและเครือข่ายผู้ใช้น้ำ</text>
+<rect x="932" y="660" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="684" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-06</text>
+<text x="948" y="708" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">การมีส่วนร่วมและเครือข่าย</text>
+<rect x="40" y="752" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="776" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-07 · ภารกิจ</text>
+<text x="56" y="800" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">สถานการณ์น้ำ ข้อมูลสารสนเทศ</text>
+<text x="56" y="824" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ทรัพยากรน้ำ และผังน้ำ</text>
+<rect x="932" y="752" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="776" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-07</text>
+<text x="948" y="800" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ข้อมูลน้ำและผังน้ำ</text>
+<rect x="40" y="844" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="868" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-08 · ภารกิจ</text>
+<text x="56" y="892" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ติดตามและประเมินผลแผนงาน</text>
+<text x="56" y="916" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">และแผนแม่บท</text>
+<rect x="932" y="844" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="868" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-08</text>
+<text x="948" y="892" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ติดตามและประเมินผล</text>
+<rect x="40" y="936" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="960" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-09 · ภารกิจ</text>
+<text x="56" y="984" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">บริหารจัดการนวัตกรรม</text>
+<rect x="932" y="936" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="960" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-09</text>
+<text x="948" y="984" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">บริหารนวัตกรรม</text>
+<rect x="40" y="1028" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="1052" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-10 · ภารกิจ</text>
+<text x="56" y="1076" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ความร่วมมือระหว่างประเทศ</text>
+<rect x="932" y="1028" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="1052" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-10</text>
+<text x="948" y="1076" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ความร่วมมือระหว่างประเทศ</text>
+<rect x="40" y="1120" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="1144" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-11 · ภารกิจ</text>
+<text x="56" y="1168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">งานเลขานุการ ธุรการ และพัสดุ</text>
+<rect x="932" y="1120" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="1144" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-11</text>
+<text x="948" y="1168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">เลขานุการ ธุรการ พัสดุ</text>
+<rect x="40" y="1212" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="1236" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-12 · ภารกิจ</text>
+<text x="56" y="1260" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">งานประชาสัมพันธ์</text>
+<rect x="932" y="1212" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="1236" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-12</text>
+<text x="948" y="1260" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ประชาสัมพันธ์</text>
+<rect x="40" y="1304" width="480" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="56" y="1328" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">KM-13 · ภารกิจ</text>
+<text x="56" y="1352" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">งานพัฒนาระบบบริหาร</text>
+<text x="56" y="1376" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">และบริหารงานบุคคล</text>
+<rect x="932" y="1304" width="300" height="80" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="948" y="1328" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SUB-AGENT KM-13</text>
+<text x="948" y="1352" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ระบบบริหารและบุคคล</text>
+<rect x="640" y="152" width="180" height="1236" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="656" y="176" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">ORCHESTRATOR</text>
+<text x="656" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">Agent หลัก</text>
+<text x="656" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">
+</text>
+<text x="656" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">รับโจทย์</text>
+<text x="656" y="272" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">กำหนดบริบท</text>
+<text x="656" y="296" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">เลือก Sub-agent</text>
+<text x="656" y="320" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">
+</text>
+<text x="656" y="344" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ประสานงาน</text>
+<text x="656" y="368" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">หลายภารกิจ</text>
+<text x="656" y="392" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">
+</text>
+<text x="656" y="416" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">รวบรวมหลักฐาน</text>
+<text x="656" y="440" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">สังเคราะห์คำตอบ</text>
+<text x="656" y="464" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">พร้อมแหล่งอ้างอิง</text>
+<rect x="1512" y="152" width="288" height="528" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="1528" y="176" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">SHARED KNOWLEDGE</text>
+<text x="1528" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ระบบคลังรวม</text>
+<text x="1528" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">องค์ความรู้อัจฉริยะ</text>
+<text x="1528" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">
+</text>
+<text x="1528" y="272" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">เอกสาร / คู่มือ</text>
+<text x="1528" y="296" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">มติ / คำถามที่พบบ่อย</text>
+<text x="1528" y="320" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">บทเรียนที่ตรวจรับแล้ว</text>
+<text x="1528" y="344" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">
+</text>
+<text x="1528" y="368" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ทุก Sub-agent ใช้ร่วมกัน</text>
+<text x="1528" y="392" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">Agent หลักใช้ร่วมกัน</text>
+<text x="1528" y="416" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">
+</text>
+<text x="1528" y="440" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ค้นและถาม–ตอบ</text>
+<text x="1528" y="464" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ตามสิทธิ์ของผู้ใช้</text>
+<rect x="1512" y="780" width="288" height="172" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="1528" y="804" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">MCP-01 · เพิ่มเติม</text>
+<text x="1528" y="828" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">MCP ฐานข้อมูล</text>
+<text x="1528" y="852" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">สถานการณ์น้ำ</text>
+<text x="1528" y="876" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">หลัก: KM-07</text>
+<text x="1528" y="900" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ร่วม: KM-03, KM-08</text>
+<rect x="1512" y="988" width="288" height="172" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="1528" y="1012" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">MCP-02 · เพิ่มเติม</text>
+<text x="1528" y="1036" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">MCP ฐานข้อมูลแผนงาน</text>
+<text x="1528" y="1060" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">(ThaiWaterPlan)</text>
+<text x="1528" y="1084" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">หลัก: KM-02</text>
+<text x="1528" y="1108" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ร่วม: KM-01, KM-08</text>
+<rect x="1512" y="1196" width="288" height="172" rx="6" fill="#FFFFFF" stroke="#B4B4BA"/>
+<text x="1528" y="1220" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" fill="#0066CC" font-weight="600">MCP-03 · เพิ่มเติม</text>
+<text x="1528" y="1244" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">MCP ฐานข้อมูล</text>
+<text x="1528" y="1268" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ภูมิสารสนเทศ</text>
+<text x="1528" y="1292" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">หลัก: KM-07</text>
+<text x="1528" y="1316" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="500">ร่วม: KM-02, KM-03</text>
+<path d="M 40 1432 H 1800" stroke="#D2D2D7"/>
+<text x="40" y="1472" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="16" fill="#1D1D1F" font-weight="400">อ่านจากซ้ายไปขวา • ทุกเส้นหนาเท่ากัน แสดงความสัมพันธ์ ไม่ใช่ปริมาณงาน งบประมาณ หรือความถี่</text>
+</svg>
+</div>
+<div class="legend">
+<span>
+<i class="swatch">
+</i>มอบหมายงาน / เรียกใช้ MCP ตามความจำเป็น</span>
+<span>
+<i class="swatch blue">
+</i>เข้าถึงคลังองค์ความรู้กลางร่วมกัน</span>
+</div>
+<p>ชื่อ Sub-agent บางรายการย่อเพื่อการจัดหน้า ตรวจชื่อภารกิจฉบับเต็มได้ในตารางด้านล่าง เส้นที่ตัดกันไม่ได้หมายถึงการเชื่อมต่อกัน</p>
+<h2>ความเชื่อมโยงที่ตรวจสอบได้</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>รหัส</th>
+<th>ภารกิจ</th>
+<th>Agent</th>
+<th>เครื่องมือ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KM-01</td>
+<td>นโยบายและแผนบริหารจัดการน้ำ</td>
+<td>Agent หลัก → Sub-agent KM-01</td>
+<td>คลังองค์ความรู้กลาง + MCP-02</td>
+</tr>
+<tr>
+<td>KM-02</td>
+<td>บูรณาการแผนงานและงบประมาณ</td>
+<td>Agent หลัก → Sub-agent KM-02</td>
+<td>คลังองค์ความรู้กลาง + MCP-02, MCP-03</td>
+</tr>
+<tr>
+<td>KM-03</td>
+<td>บริหารจัดการน้ำระดับลุ่มน้ำ</td>
+<td>Agent หลัก → Sub-agent KM-03</td>
+<td>คลังองค์ความรู้กลาง + MCP-01, MCP-03</td>
+</tr>
+<tr>
+<td>KM-04</td>
+<td>กฎหมายและระเบียบด้านทรัพยากรน้ำ</td>
+<td>Agent หลัก → Sub-agent KM-04</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-05</td>
+<td>งานเลขานุการคณะกรรมการ</td>
+<td>Agent หลัก → Sub-agent KM-05</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-06</td>
+<td>การมีส่วนร่วมและเครือข่ายผู้ใช้น้ำ</td>
+<td>Agent หลัก → Sub-agent KM-06</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-07</td>
+<td>สถานการณ์น้ำ ข้อมูลสารสนเทศทรัพยากรน้ำ และผังน้ำ</td>
+<td>Agent หลัก → Sub-agent KM-07</td>
+<td>คลังองค์ความรู้กลาง + MCP-01, MCP-03</td>
+</tr>
+<tr>
+<td>KM-08</td>
+<td>ติดตามและประเมินผลแผนงานและแผนแม่บท</td>
+<td>Agent หลัก → Sub-agent KM-08</td>
+<td>คลังองค์ความรู้กลาง + MCP-01, MCP-02</td>
+</tr>
+<tr>
+<td>KM-09</td>
+<td>บริหารจัดการนวัตกรรม</td>
+<td>Agent หลัก → Sub-agent KM-09</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-10</td>
+<td>ความร่วมมือระหว่างประเทศ</td>
+<td>Agent หลัก → Sub-agent KM-10</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-11</td>
+<td>งานเลขานุการ ธุรการ และพัสดุ</td>
+<td>Agent หลัก → Sub-agent KM-11</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-12</td>
+<td>งานประชาสัมพันธ์</td>
+<td>Agent หลัก → Sub-agent KM-12</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-13</td>
+<td>งานพัฒนาระบบบริหารและบริหารงานบุคคล</td>
+<td>Agent หลัก → Sub-agent KM-13</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Agent หลักสังเคราะห์คำตอบโดยรักษาแหล่งอ้างอิงและข้อจำกัด ผู้รับผิดชอบตรวจสอบข้อเสนอและพิจารณาตัดสินใจตามอำนาจหน้าที่</p>
+<p>
+<a href="onwr-agent-mission-tools.html">เปิดแผนภาพรายละเอียดชุดเดิม →</a>
+</p>
+</main>
+<footer>แหล่งข้อมูล: missions.json · agent-connectors.json · ONWR_AGENT_MCP_PRINCIPLES.md<br>รูปแบบอ้างอิง style_web.md • 11 พฤศจิกายน 2569 • ฟอนต์ Inter และ IBM Plex Sans Thai จาก Google Fonts พร้อมฟอนต์สำรอง</footer>
+</body>
+</html>

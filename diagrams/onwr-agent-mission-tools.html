@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ONWR · 13 ภารกิจ Agent และเครื่องมือ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#F5F5F7;color:#1D1D1F;font-family:Inter,'IBM Plex Sans Thai',sans-serif;line-height:1.65}header,main,footer{max-width:1360px;margin:auto;padding:40px}header{padding-top:72px}h1{font-size:44px;line-height:1.3;max-width:900px;font-weight:600}h2{font-size:26px;line-height:1.4}p{color:#6E6E73;max-width:1050px}small,.eyebrow{color:#0066CC}nav{display:flex;flex-wrap:wrap;gap:20px}a{color:#0066CC;text-decoration:none}section{padding:32px 0 48px;border-top:1px solid #D2D2D7;scroll-margin-top:24px}.diagram-container{width:100%;overflow-x:auto}svg{width:100%;min-width:1280px;display:block}table{border-collapse:collapse;width:100%;font-size:14px}td,th{text-align:left;padding:16px 12px;border-bottom:1px solid #D2D2D7}th{background:#EAF2FC}.table-wrap{overflow-x:auto}footer{font-size:13px}.note{border-left:3px solid #0066CC;padding-left:20px}@media(max-width:700px){header,main,footer{padding:24px}h1{font-size:32px}}@media print{header,main,footer{padding:16px}.diagram-container{overflow-x:visible}svg{min-width:0}section{break-before:page;break-inside:avoid}nav{display:none}}</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">ONWR / KNOWLEDGE &amp; AGENT ARCHITECTURE</div>
+<h1>13 ภารกิจ เชื่อม Agent<br>และเครื่องมือที่ใช้</h1>
+<p>หนึ่ง Agent หลัก ประสาน Sub-agent 13 ด้าน ใช้ระบบคลังรวมองค์ความรู้อัจฉริยะร่วมกัน และเรียกใช้ MCP เฉพาะด้านตามความจำเป็น</p>
+<p class="note">แบบแนวคิดตามเอกสารโครงการ • 11 พฤศจิกายน 2569<br>MCP ทั้ง 3 ระบบเป็นข้อเสนอการพัฒนา ยังไม่ได้เชื่อมต่อฐานข้อมูลจริง</p>
+<nav>
+<a href="#overview">ภาพรวม</a>
+<a href="#missions-1">ภารกิจ ชุด 1</a>
+<a href="#missions-2">ภารกิจ ชุด 2</a>
+<a href="#missions-3">ภารกิจ ชุด 3</a>
+<a href="#missions-4">ภารกิจ ชุด 4</a>
+<a href="#mcp-01">MCP ทั้ง 3 ระบบ</a>
+<a href="#matrix">ตารางครบ 13 ภารกิจ</a>
+</nav>
+</header>
+<main>
+<section id="overview">
+<h2>ภาพรวม · ภารกิจ → Agent → เครื่องมือ</h2>
+<p>Agent หลักประสาน Sub-agent ตามโจทย์ ก่อนรวบรวมหลักฐานและส่งข้อเสนอให้ผู้รับผิดชอบตรวจสอบ</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="overview-title overview-desc">
+<title id="overview-title">ภาพรวม · ภารกิจ → Agent → เครื่องมือ</title>
+<desc id="overview-desc">Agent หลักประสาน Sub-agent ตามโจทย์ ก่อนรวบรวมหลักฐานและส่งข้อเสนอให้ผู้รับผิดชอบตรวจสอบ</desc>
+<defs>
+<marker id="overview-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 280 228 H 344" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#overview-arrow)"/>
+<path d="M 584 228 H 648" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#overview-arrow)"/>
+<path d="M 888 228 H 952" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#overview-arrow)"/>
+<rect x="40" y="164" width="240" height="152" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="192" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">01 · INPUT</text>
+<text x="60" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ผู้ใช้ / เจ้าหน้าที่</text>
+<text x="60" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ระบุโจทย์ พื้นที่ ช่วงเวลา</text>
+<rect x="344" y="164" width="240" height="152" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="364" y="192" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">02 · MAIN AGENT</text>
+<text x="364" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Agent หลัก</text>
+<text x="364" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">รับโจทย์และเลือกผู้เชี่ยวชาญ</text>
+<rect x="648" y="164" width="240" height="152" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="668" y="192" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">03 · SUB-AGENTS</text>
+<text x="668" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Sub-agent 13 ด้าน</text>
+<text x="668" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">แบ่งงานตามภารกิจ KM-01–13</text>
+<rect x="952" y="164" width="288" height="152" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="972" y="192" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">04 · TOOLS</text>
+<text x="972" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">คลังองค์ความรู้กลาง</text>
+<text x="972" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">และ MCP ตามภารกิจ</text>
+<text x="40" y="88" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">โครงสร้างการทำงานร่วมกัน</text>
+<text x="40" y="400" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">เมื่อได้รับหลักฐานกลับมา</text>
+<rect x="40" y="432" width="568" height="120" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="60" y="460" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">05 · SYNTHESIS</text>
+<text x="60" y="492" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Agent หลักสังเคราะห์คำตอบ</text>
+<text x="60" y="516" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">คงแหล่งอ้างอิง รุ่นข้อมูล และข้อจำกัด</text>
+<path d="M 608 492 H 672" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#overview-arrow)"/>
+<rect x="672" y="432" width="568" height="120" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="692" y="460" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">06 · HUMAN REVIEW</text>
+<text x="692" y="492" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ผู้รับผิดชอบตรวจสอบข้อเสนอ</text>
+<text x="692" y="516" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">พิจารณาตัดสินใจตามอำนาจหน้าที่</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ลูกศร = ลำดับการมอบหมาย / เรียกใช้     •     การส่งผลกลับอธิบายด้วยข้อความเพื่อลดเส้นไขว้</text>
+</svg>
+</div>
+</section>
+<section id="missions-1">
+<h2>13 ภารกิจ · ชุด 1 / 4</h2>
+<p>KM-01 ถึง KM-04 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="missions-1-title missions-1-desc">
+<title id="missions-1-title">13 ภารกิจ · ชุด 1 / 4</title>
+<desc id="missions-1-desc">KM-01 ถึง KM-04 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</desc>
+<defs>
+<marker id="missions-1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 280 174 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 904 174 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 280 294 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 904 294 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 280 414 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 904 414 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 280 534 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<path d="M 904 534 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-1-arrow)"/>
+<rect x="40" y="120" width="240" height="468" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="60" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MAIN AGENT</text>
+<text x="60" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Agent หลัก</text>
+<text x="60" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">เลือก / มอบหมายงาน</text>
+<text x="60" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามบริบทของโจทย์</text>
+<rect x="1000" y="120" width="240" height="468" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="1020" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">SHARED KNOWLEDGE</text>
+<text x="1020" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ระบบคลังรวม</text>
+<text x="1020" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">องค์ความรู้อัจฉริยะ</text>
+<text x="1020" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ค้นและถาม–ตอบ</text>
+<text x="1020" y="252" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามสิทธิ์ของผู้ใช้</text>
+<rect x="376" y="120" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-01 · SUB-AGENT</text>
+<text x="396" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">นโยบายและแผนบริหารจัดการน้ำ</text>
+<rect x="376" y="240" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="268" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-02 · SUB-AGENT</text>
+<text x="396" y="300" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บูรณาการแผนงานและงบประมาณ</text>
+<rect x="376" y="360" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="388" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-03 · SUB-AGENT</text>
+<text x="396" y="420" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บริหารจัดการน้ำระดับลุ่มน้ำ</text>
+<rect x="376" y="480" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="508" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-04 · SUB-AGENT</text>
+<text x="396" y="540" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">กฎหมายและระเบียบด้านทรัพยากรน้ำ</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">ภารกิจและ Sub-agent ใช้รหัส KM เดียวกัน</text>
+<text x="40" y="96" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ชื่อ Sub-agent ในภาพอิงชื่อภารกิจ ไม่ได้กำหนดระบบหรือผลิตภัณฑ์ใหม่</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ซ้าย → กลาง = มอบหมายงาน     •     กลาง → ขวา = ค้นองค์ความรู้     •     Agent หลักใช้คลังกลางร่วมกันด้วย</text>
+</svg>
+</div>
+</section>
+<section id="missions-2">
+<h2>13 ภารกิจ · ชุด 2 / 4</h2>
+<p>KM-05 ถึง KM-08 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="missions-2-title missions-2-desc">
+<title id="missions-2-title">13 ภารกิจ · ชุด 2 / 4</title>
+<desc id="missions-2-desc">KM-05 ถึง KM-08 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</desc>
+<defs>
+<marker id="missions-2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 280 174 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 904 174 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 280 294 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 904 294 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 280 414 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 904 414 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 280 534 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<path d="M 904 534 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-2-arrow)"/>
+<rect x="40" y="120" width="240" height="468" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="60" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MAIN AGENT</text>
+<text x="60" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Agent หลัก</text>
+<text x="60" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">เลือก / มอบหมายงาน</text>
+<text x="60" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามบริบทของโจทย์</text>
+<rect x="1000" y="120" width="240" height="468" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="1020" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">SHARED KNOWLEDGE</text>
+<text x="1020" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ระบบคลังรวม</text>
+<text x="1020" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">องค์ความรู้อัจฉริยะ</text>
+<text x="1020" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ค้นและถาม–ตอบ</text>
+<text x="1020" y="252" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามสิทธิ์ของผู้ใช้</text>
+<rect x="376" y="120" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-05 · SUB-AGENT</text>
+<text x="396" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">งานเลขานุการคณะกรรมการ</text>
+<rect x="376" y="240" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="268" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-06 · SUB-AGENT</text>
+<text x="396" y="300" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">การมีส่วนร่วมและเครือข่ายผู้ใช้น้ำ</text>
+<rect x="376" y="360" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="388" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-07 · SUB-AGENT</text>
+<text x="396" y="420" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">สถานการณ์น้ำ ข้อมูลสารสนเทศ</text>
+<text x="396" y="444" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ทรัพยากรน้ำ และผังน้ำ</text>
+<rect x="376" y="480" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="508" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-08 · SUB-AGENT</text>
+<text x="396" y="540" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ติดตามและประเมินผลแผนงาน</text>
+<text x="396" y="564" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">และแผนแม่บท</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">ภารกิจและ Sub-agent ใช้รหัส KM เดียวกัน</text>
+<text x="40" y="96" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ชื่อ Sub-agent ในภาพอิงชื่อภารกิจ ไม่ได้กำหนดระบบหรือผลิตภัณฑ์ใหม่</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ซ้าย → กลาง = มอบหมายงาน     •     กลาง → ขวา = ค้นองค์ความรู้     •     Agent หลักใช้คลังกลางร่วมกันด้วย</text>
+</svg>
+</div>
+</section>
+<section id="missions-3">
+<h2>13 ภารกิจ · ชุด 3 / 4</h2>
+<p>KM-09 ถึง KM-11 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="missions-3-title missions-3-desc">
+<title id="missions-3-title">13 ภารกิจ · ชุด 3 / 4</title>
+<desc id="missions-3-desc">KM-09 ถึง KM-11 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</desc>
+<defs>
+<marker id="missions-3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 280 174 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-3-arrow)"/>
+<path d="M 904 174 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-3-arrow)"/>
+<path d="M 280 294 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-3-arrow)"/>
+<path d="M 904 294 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-3-arrow)"/>
+<path d="M 280 414 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-3-arrow)"/>
+<path d="M 904 414 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-3-arrow)"/>
+<rect x="40" y="120" width="240" height="348" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="60" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MAIN AGENT</text>
+<text x="60" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Agent หลัก</text>
+<text x="60" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">เลือก / มอบหมายงาน</text>
+<text x="60" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามบริบทของโจทย์</text>
+<rect x="1000" y="120" width="240" height="348" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="1020" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">SHARED KNOWLEDGE</text>
+<text x="1020" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ระบบคลังรวม</text>
+<text x="1020" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">องค์ความรู้อัจฉริยะ</text>
+<text x="1020" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ค้นและถาม–ตอบ</text>
+<text x="1020" y="252" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามสิทธิ์ของผู้ใช้</text>
+<rect x="376" y="120" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-09 · SUB-AGENT</text>
+<text x="396" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บริหารจัดการนวัตกรรม</text>
+<rect x="376" y="240" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="268" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-10 · SUB-AGENT</text>
+<text x="396" y="300" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ความร่วมมือระหว่างประเทศ</text>
+<rect x="376" y="360" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="388" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-11 · SUB-AGENT</text>
+<text x="396" y="420" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">งานเลขานุการ ธุรการ และพัสดุ</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">ภารกิจและ Sub-agent ใช้รหัส KM เดียวกัน</text>
+<text x="40" y="96" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ชื่อ Sub-agent ในภาพอิงชื่อภารกิจ ไม่ได้กำหนดระบบหรือผลิตภัณฑ์ใหม่</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ซ้าย → กลาง = มอบหมายงาน     •     กลาง → ขวา = ค้นองค์ความรู้     •     Agent หลักใช้คลังกลางร่วมกันด้วย</text>
+</svg>
+</div>
+</section>
+<section id="missions-4">
+<h2>13 ภารกิจ · ชุด 4 / 4</h2>
+<p>KM-12 ถึง KM-13 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="missions-4-title missions-4-desc">
+<title id="missions-4-title">13 ภารกิจ · ชุด 4 / 4</title>
+<desc id="missions-4-desc">KM-12 ถึง KM-13 — ทุก Sub-agent ใช้คลังองค์ความรู้กลางร่วมกัน</desc>
+<defs>
+<marker id="missions-4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 280 174 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-4-arrow)"/>
+<path d="M 904 174 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-4-arrow)"/>
+<path d="M 280 294 H 376" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-4-arrow)"/>
+<path d="M 904 294 H 1000" fill="none" stroke="#6E6E73" stroke-width="1.5"  marker-end="url(#missions-4-arrow)"/>
+<rect x="40" y="120" width="240" height="228" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="60" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MAIN AGENT</text>
+<text x="60" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Agent หลัก</text>
+<text x="60" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">เลือก / มอบหมายงาน</text>
+<text x="60" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามบริบทของโจทย์</text>
+<rect x="1000" y="120" width="240" height="228" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="1020" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">SHARED KNOWLEDGE</text>
+<text x="1020" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ระบบคลังรวม</text>
+<text x="1020" y="204" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">องค์ความรู้อัจฉริยะ</text>
+<text x="1020" y="228" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ค้นและถาม–ตอบ</text>
+<text x="1020" y="252" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ตามสิทธิ์ของผู้ใช้</text>
+<rect x="376" y="120" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="148" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-12 · SUB-AGENT</text>
+<text x="396" y="180" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">งานประชาสัมพันธ์</text>
+<rect x="376" y="240" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="396" y="268" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-13 · SUB-AGENT</text>
+<text x="396" y="300" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">งานพัฒนาระบบบริหาร</text>
+<text x="396" y="324" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">และบริหารงานบุคคล</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">ภารกิจและ Sub-agent ใช้รหัส KM เดียวกัน</text>
+<text x="40" y="96" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ชื่อ Sub-agent ในภาพอิงชื่อภารกิจ ไม่ได้กำหนดระบบหรือผลิตภัณฑ์ใหม่</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ซ้าย → กลาง = มอบหมายงาน     •     กลาง → ขวา = ค้นองค์ความรู้     •     Agent หลักใช้คลังกลางร่วมกันด้วย</text>
+</svg>
+</div>
+</section>
+<section id="mcp-01">
+<h2>MCP-01 · MCP ฐานข้อมูล สถานการณ์น้ำ</h2>
+<p>Sub-agent เรียกค้นและอ่านข้อมูลตามสิทธิ์ โดยคงเวลา หน่วยวัด และแหล่งที่มา</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="mcp-01-title mcp-01-desc">
+<title id="mcp-01-title">MCP-01 · MCP ฐานข้อมูล สถานการณ์น้ำ</title>
+<desc id="mcp-01-desc">Sub-agent เรียกค้นและอ่านข้อมูลตามสิทธิ์ โดยคงเวลา หน่วยวัด และแหล่งที่มา</desc>
+<defs>
+<marker id="mcp-01-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 568 194 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-01-arrow)"/>
+<path d="M 568 338 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-01-arrow)"/>
+<path d="M 568 482 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-01-arrow)"/>
+<rect x="40" y="140" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-07 · ผู้ใช้หลัก</text>
+<text x="60" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">สถานการณ์น้ำ ข้อมูลสารสนเทศ</text>
+<text x="60" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ทรัพยากรน้ำ และผังน้ำ</text>
+<rect x="40" y="284" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="312" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-03 · ผู้ใช้ร่วม</text>
+<text x="60" y="344" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บริหารจัดการน้ำระดับลุ่มน้ำ</text>
+<rect x="40" y="428" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="456" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-08 · ผู้ใช้ร่วม</text>
+<text x="60" y="488" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ติดตามและประเมินผลแผนงาน</text>
+<text x="60" y="512" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">และแผนแม่บท</text>
+<rect x="760" y="140" width="480" height="396" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="780" y="168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MCP-01 · PROPOSED CONNECTOR</text>
+<text x="780" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">MCP ฐานข้อมูล</text>
+<text x="780" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">สถานการณ์น้ำ</text>
+<text x="780" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">
+</text>
+<text x="780" y="272" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ฝน · ระดับน้ำ · ปริมาณน้ำไหล</text>
+<text x="780" y="296" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ปริมาณน้ำในแหล่งน้ำ</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">เครื่องมือเชื่อมฐานข้อมูลเฉพาะด้าน</text>
+<text x="40" y="100" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ใช้เพิ่มเติมจากคลังองค์ความรู้กลาง เมื่อโจทย์จำเป็นต้องอาศัยข้อมูลเฉพาะด้าน</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ลูกศรประ = เรียกใช้ตามความจำเป็น     •     MCP เป็นข้อเสนอระยะออกแบบ ยังไม่ได้เชื่อมต่อฐานข้อมูลจริง</text>
+</svg>
+</div>
+</section>
+<section id="mcp-02">
+<h2>MCP-02 · MCP ฐานข้อมูลแผนงาน (ThaiWaterPlan)</h2>
+<p>Sub-agent เรียกค้นและอ่านข้อมูลตามสิทธิ์ โดยคงเวลา หน่วยวัด และแหล่งที่มา</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="mcp-02-title mcp-02-desc">
+<title id="mcp-02-title">MCP-02 · MCP ฐานข้อมูลแผนงาน (ThaiWaterPlan)</title>
+<desc id="mcp-02-desc">Sub-agent เรียกค้นและอ่านข้อมูลตามสิทธิ์ โดยคงเวลา หน่วยวัด และแหล่งที่มา</desc>
+<defs>
+<marker id="mcp-02-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 568 194 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-02-arrow)"/>
+<path d="M 568 338 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-02-arrow)"/>
+<path d="M 568 482 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-02-arrow)"/>
+<rect x="40" y="140" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-02 · ผู้ใช้หลัก</text>
+<text x="60" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บูรณาการแผนงานและงบประมาณ</text>
+<rect x="40" y="284" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="312" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-01 · ผู้ใช้ร่วม</text>
+<text x="60" y="344" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">นโยบายและแผนบริหารจัดการน้ำ</text>
+<rect x="40" y="428" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="456" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-08 · ผู้ใช้ร่วม</text>
+<text x="60" y="488" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">ติดตามและประเมินผลแผนงาน</text>
+<text x="60" y="512" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">และแผนแม่บท</text>
+<rect x="760" y="140" width="480" height="396" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="780" y="168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MCP-02 · PROPOSED CONNECTOR</text>
+<text x="780" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">MCP ฐานข้อมูลแผนงาน</text>
+<text x="780" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">(ThaiWaterPlan)</text>
+<text x="780" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">
+</text>
+<text x="780" y="272" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">แผนงาน · โครงการ · งบประมาณ</text>
+<text x="780" y="296" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">พื้นที่ · หน่วยงาน · สถานะ</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">เครื่องมือเชื่อมฐานข้อมูลเฉพาะด้าน</text>
+<text x="40" y="100" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ใช้เพิ่มเติมจากคลังองค์ความรู้กลาง เมื่อโจทย์จำเป็นต้องอาศัยข้อมูลเฉพาะด้าน</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ลูกศรประ = เรียกใช้ตามความจำเป็น     •     MCP เป็นข้อเสนอระยะออกแบบ ยังไม่ได้เชื่อมต่อฐานข้อมูลจริง</text>
+</svg>
+</div>
+</section>
+<section id="mcp-03">
+<h2>MCP-03 · MCP ฐานข้อมูล ภูมิสารสนเทศ</h2>
+<p>Sub-agent เรียกค้นและอ่านข้อมูลตามสิทธิ์ โดยคงเวลา หน่วยวัด และแหล่งที่มา</p>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="mcp-03-title mcp-03-desc">
+<title id="mcp-03-title">MCP-03 · MCP ฐานข้อมูล ภูมิสารสนเทศ</title>
+<desc id="mcp-03-desc">Sub-agent เรียกค้นและอ่านข้อมูลตามสิทธิ์ โดยคงเวลา หน่วยวัด และแหล่งที่มา</desc>
+<defs>
+<marker id="mcp-03-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 Z" fill="#6E6E73"/>
+</marker>
+</defs>
+<rect width="1280" height="720" fill="#F5F5F7"/>
+<path d="M 568 194 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-03-arrow)"/>
+<path d="M 568 338 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-03-arrow)"/>
+<path d="M 568 482 H 760" fill="none" stroke="#6E6E73" stroke-width="1.5"  stroke-dasharray="5 4" marker-end="url(#mcp-03-arrow)"/>
+<rect x="40" y="140" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-07 · ผู้ใช้หลัก</text>
+<text x="60" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">สถานการณ์น้ำ ข้อมูลสารสนเทศ</text>
+<text x="60" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ทรัพยากรน้ำ และผังน้ำ</text>
+<rect x="40" y="284" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="312" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-03 · ผู้ใช้ร่วม</text>
+<text x="60" y="344" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บริหารจัดการน้ำระดับลุ่มน้ำ</text>
+<rect x="40" y="428" width="528" height="108" rx="6" fill="#FFFFFF" stroke="#6E6E73"/>
+<text x="60" y="456" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#6E6E73">KM-02 · ผู้ใช้ร่วม</text>
+<text x="60" y="488" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">บูรณาการแผนงานและงบประมาณ</text>
+<rect x="760" y="140" width="480" height="396" rx="6" fill="#EAF2FC" stroke="#0066CC"/>
+<text x="780" y="168" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="600" fill="#0066CC">MCP-03 · PROPOSED CONNECTOR</text>
+<text x="780" y="200" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">MCP ฐานข้อมูล</text>
+<text x="780" y="224" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ภูมิสารสนเทศ</text>
+<text x="780" y="248" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">
+</text>
+<text x="780" y="272" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">ขอบเขตลุ่มน้ำ · ที่ตั้งโครงการ</text>
+<text x="780" y="296" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#1D1D1F">เขตการปกครอง · ชั้นข้อมูลผังน้ำ</text>
+<text x="40" y="64" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="28" font-weight="600" fill="#1D1D1F">เครื่องมือเชื่อมฐานข้อมูลเฉพาะด้าน</text>
+<text x="40" y="100" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="14" font-weight="400" fill="#6E6E73">ใช้เพิ่มเติมจากคลังองค์ความรู้กลาง เมื่อโจทย์จำเป็นต้องอาศัยข้อมูลเฉพาะด้าน</text>
+<path d="M 40 644 H 1240" stroke="#D2D2D7"/>
+<text x="40" y="676" font-family="Inter, IBM Plex Sans Thai, sans-serif" font-size="12" font-weight="400" fill="#1D1D1F">ลูกศรประ = เรียกใช้ตามความจำเป็น     •     MCP เป็นข้อเสนอระยะออกแบบ ยังไม่ได้เชื่อมต่อฐานข้อมูลจริง</text>
+</svg>
+</div>
+</section>
+<section id="matrix">
+<h2>ตารางตรวจสอบความเชื่อมโยงครบ 13 ภารกิจ</h2>
+<p>Agent หลักเลือก Sub-agent ได้มากกว่าหนึ่งด้านตามโจทย์ ทุกด้านใช้คลังองค์ความรู้กลาง ส่วน MCP ระบุเฉพาะความเชื่อมโยงที่มีในเอกสารโครงการ</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>รหัส</th>
+<th>ภารกิจ</th>
+<th>ผู้รับงาน</th>
+<th>เครื่องมือที่ใช้</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KM-01</td>
+<td>นโยบายและแผนบริหารจัดการน้ำ</td>
+<td>Sub-agent KM-01</td>
+<td>คลังองค์ความรู้กลาง + MCP-02</td>
+</tr>
+<tr>
+<td>KM-02</td>
+<td>บูรณาการแผนงานและงบประมาณ</td>
+<td>Sub-agent KM-02</td>
+<td>คลังองค์ความรู้กลาง + MCP-02 + MCP-03</td>
+</tr>
+<tr>
+<td>KM-03</td>
+<td>บริหารจัดการน้ำระดับลุ่มน้ำ</td>
+<td>Sub-agent KM-03</td>
+<td>คลังองค์ความรู้กลาง + MCP-01 + MCP-03</td>
+</tr>
+<tr>
+<td>KM-04</td>
+<td>กฎหมายและระเบียบด้านทรัพยากรน้ำ</td>
+<td>Sub-agent KM-04</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-05</td>
+<td>งานเลขานุการคณะกรรมการ</td>
+<td>Sub-agent KM-05</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-06</td>
+<td>การมีส่วนร่วมและเครือข่ายผู้ใช้น้ำ</td>
+<td>Sub-agent KM-06</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-07</td>
+<td>สถานการณ์น้ำ ข้อมูลสารสนเทศทรัพยากรน้ำ และผังน้ำ</td>
+<td>Sub-agent KM-07</td>
+<td>คลังองค์ความรู้กลาง + MCP-01 + MCP-03</td>
+</tr>
+<tr>
+<td>KM-08</td>
+<td>ติดตามและประเมินผลแผนงานและแผนแม่บท</td>
+<td>Sub-agent KM-08</td>
+<td>คลังองค์ความรู้กลาง + MCP-01 + MCP-02</td>
+</tr>
+<tr>
+<td>KM-09</td>
+<td>บริหารจัดการนวัตกรรม</td>
+<td>Sub-agent KM-09</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-10</td>
+<td>ความร่วมมือระหว่างประเทศ</td>
+<td>Sub-agent KM-10</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-11</td>
+<td>งานเลขานุการ ธุรการ และพัสดุ</td>
+<td>Sub-agent KM-11</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-12</td>
+<td>งานประชาสัมพันธ์</td>
+<td>Sub-agent KM-12</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+<tr>
+<td>KM-13</td>
+<td>งานพัฒนาระบบบริหารและบริหารงานบุคคล</td>
+<td>Sub-agent KM-13</td>
+<td>คลังองค์ความรู้กลาง</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section>
+<h2>เงื่อนไขการทำงานร่วมกัน</h2>
+<p>ตรวจความสอดคล้องของรหัสพื้นที่ รหัสโครงการ ช่วงเวลา หน่วยวัด และรุ่นข้อมูลก่อนนำข้อมูลมาประกอบกัน Agent หลักสังเคราะห์คำตอบพร้อมแหล่งอ้างอิงและข้อจำกัด โดยผู้รับผิดชอบเป็นผู้ตรวจสอบและตัดสินใจตามอำนาจหน้าที่</p>
+</section>
+</main>
+<footer>แหล่งข้อมูล: ONWR_KM_MISSION_GROUPS.md · ONWR_AGENT_MCP_PRINCIPLES.md · missions.json · agent-connectors.json<br>รูปแบบสีและตัวอักษรอ้างอิง style_web.md • HTML พร้อม SVG ในไฟล์เดียว • ใช้ Google Fonts และมีฟอนต์สำรองของระบบ<br>การแบ่งภารกิจเป็น 4 ชุดมีไว้เพื่อจัดหน้าเท่านั้น ไม่ได้กำหนดกลุ่มงานใหม่</footer>
+</body>
+</html>
